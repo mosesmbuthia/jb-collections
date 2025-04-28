@@ -1,12 +1,14 @@
-import Navbar from './components/navbar/navbar'
-import './App.css'
+import Navbar from './components/navbar/navbar';
+import HeroSection from './components/herosection/herosection';
+
 
 function App() {
-  
-
   return (
-   <Navbar/>
-  )
+    <>
+      <Navbar />
+      <HeroSection />
+    </>
+  );
 }
 
 export default App

@@ -26,7 +26,7 @@ export default function Navbar() {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', fontWeight: 'bold' }}>
       <Typography variant="h6" sx={{ my: 2, fontWeight: 'bold' }}>
         JOHNTY BEST COLLECTIONS
       </Typography>
