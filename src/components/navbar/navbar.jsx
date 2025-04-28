@@ -47,12 +47,12 @@ export default function Navbar() {
       <AppBar position="static" color="transparent" elevation={0}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
 
-          {/* Left: Logo */}
+          
           <Typography variant="h6" component="div" sx={{ fontWeight: 'bold' }}>
             JOHNTY BEST COLLECTIONS
           </Typography>
 
-          {/* Center: Links (Desktop) */}
+          
           <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 4 }}>
             {navLinks.map((link) => (
               <Button key={link} color="inherit">
@@ -61,7 +61,7 @@ export default function Navbar() {
             ))}
           </Box>
 
-          {/* Right: Icons */}
+          
           <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
             <IconButton color="inherit" sx={{ display: { xs: 'none', md: 'flex' } }}>
               <AccountCircleIcon />
@@ -70,7 +70,7 @@ export default function Navbar() {
               <ShoppingCartIcon />
             </IconButton>
 
-            {/* Hamburger Menu (Mobile) */}
+            
             <IconButton
               color="inherit"
               edge="start"
@@ -84,13 +84,13 @@ export default function Navbar() {
         </Toolbar>
       </AppBar>
 
-      {/* Drawer for mobile menu */}
+      
       <Drawer
         anchor="left"
         open={mobileOpen}
         onClose={handleDrawerToggle}
         ModalProps={{
-          keepMounted: true, // Better open performance on mobile
+          keepMounted: true, 
         }}
         sx={{
           display: { xs: 'block', md: 'none' },
