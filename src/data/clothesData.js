@@ -1,0 +1,86 @@
+const products = [
+    {
+      id: 1,
+      name: "Classic Men's Jacket",
+      image: "https://images.unsplash.com/photo-1593032457869-7f3b8fbb978f?auto=format&fit=crop&w=800&q=80",
+      priceBefore: 1200,
+      priceNow: 890,
+      description: "Stylish and comfortable jacket for all seasons.",
+    },
+    {
+      id: 2,
+      name: "Women's Summer Dress",
+      image: "https://images.unsplash.com/photo-1520975918312-1c1f2bc49851?auto=format&fit=crop&w=800&q=80",
+      priceBefore: 800,
+      priceNow: 490,
+      description: "Elegant floral dress perfect for summer outings.",
+    },
+    
+  {
+    id: 3,
+    name: "Men's Casual T-Shirt",
+    image: "https://images.unsplash.com/photo-1618354691373-50f408b5f9bd?auto=format&fit=crop&w=800&q=80",
+    priceBefore: 3000,
+    priceNow: 1900,
+    description: "Soft cotton T-shirt with a relaxed fit.",
+  },
+  {
+    id: 4,
+    name: "Women's Knit Sweater",
+    image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80",
+    priceBefore: 70,
+    priceNow: 45,
+    description: "Cozy knit sweater, perfect for chilly evenings.",
+  },
+  {
+    id: 5,
+    name: "Unisex Sports Hoodie",
+    image: "https://images.unsplash.com/photo-1602810319009-b849ef1943c1?auto=format&fit=crop&w=800&q=80",
+    priceBefore: 900,
+    priceNow: 650,
+    description: "Lightweight hoodie ideal for workouts or casual wear.",
+  },
+  {
+    id: 6,
+    name: "Men's Slim Fit Jeans",
+    image: "https://images.unsplash.com/photo-1618354877765-cf2b8a4b05e1?auto=format&fit=crop&w=800&q=80",
+    priceBefore: 1000,
+    priceNow: 790,
+    description: "Durable denim jeans with a modern slim fit.",
+  },
+  {
+    id: 7,
+    name: "Women's Denim Jacket",
+    image: "https://images.unsplash.com/photo-1562157873-818bc0726f83?auto=format&fit=crop&w=800&q=80",
+    priceBefore: 1100,
+    priceNow: 880,
+    description: "Vintage-inspired denim jacket with classic details.",
+  },
+  {
+    id: 8,
+    name: "Men's Formal Shirt",
+    image: "https://images.unsplash.com/photo-1602810318948-3dc54e606b0a?auto=format&fit=crop&w=800&q=80",
+    priceBefore: 600,
+    priceNow: 420,
+    description: "Elegant formal shirt suitable for office or events.",
+  },
+  {
+    id: 9,
+    name: "Women's Office Blazer",
+    image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=80",
+    priceBefore: 1300,
+    priceNow: 999,
+    description: "Tailored blazer for a sophisticated professional look.",
+  },
+  {
+    id: 10,
+    name: "Unisex Tracksuit Set",
+    image: "https://images.unsplash.com/photo-1615212049270-752b97d66da8?auto=format&fit=crop&w=800&q=80",
+    priceBefore: 1500,
+    priceNow: 1100,
+    description: "Matching tracksuit set for stylish comfort.",
+  },
+  ];
+  
+  export default products;
+  
