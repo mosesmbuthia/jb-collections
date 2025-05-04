@@ -23,7 +23,7 @@ const AllClothesPage = () => {
                 },
               }}
             >
-              {/* Sale Badge */}
+             
               {item.priceNow < item.priceBefore && (
                 <Chip 
                   label="SALE" 
@@ -50,7 +50,7 @@ const AllClothesPage = () => {
                   {item.name}
                 </Typography>
 
-                {/* Pricing Section */}
+             
                 <Box display="flex" alignItems="center" gap={1} mb={1}>
                   <Typography 
                     variant="body2" 

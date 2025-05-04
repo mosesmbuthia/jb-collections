@@ -1,104 +1,91 @@
-import { useState } from 'react';
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Box,
-  IconButton,
-  Button,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { 
+  AppBar, 
+  Toolbar, 
+  Typography, 
+  Button, 
+  IconButton, 
+  Badge,
+  Menu,
+  MenuItem,
+  useMediaQuery,
+  useTheme
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import PersonIcon from '@mui/icons-material/Person';
 
-const navLinks = ['ALL', 'MEN', 'WOMEN'];
+function Navbar({ cartItemsCount = 0 }) {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-export default function Navbar() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
   };
 
-  const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', fontWeight: 'bold' }}>
-      <Typography variant="h6" sx={{ my: 2, fontWeight: 'bold' }}>
-        JOHNTY BEST COLLECTIONS
-      </Typography>
-      <List>
-        {navLinks.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
-    <>
-      <AppBar position="static" color="transparent" elevation={0}>
-        <Toolbar sx={{ justifyContent: 'space-between' }}>
-
-          
-          <Typography variant="h6" component="div" sx={{ fontWeight: 'bold' }}>
-            JOHNTY BEST COLLECTIONS
-          </Typography>
-
-          
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 4 }}>
-            {navLinks.map((link) => (
-              <Button key={link} color="inherit">
-                {link}
-              </Button>
-            ))}
-          </Box>
-
-          
-          <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-            <IconButton color="inherit" sx={{ display: { xs: 'none', md: 'flex' } }}>
-              <AccountCircleIcon />
-            </IconButton>
-            <IconButton color="inherit" sx={{ display: { xs: 'none', md: 'flex' } }}>
-              <ShoppingCartIcon />
-            </IconButton>
-
-            
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6" component={Link} to="/" style={{ textDecoration: 'none', color: 'white', flexGrow: 1 }}>
+          JB Collections
+        </Typography>
+        
+        {isMobile ? (
+          <>
             <IconButton
-              color="inherit"
               edge="start"
-              onClick={handleDrawerToggle}
-              sx={{ display: { md: 'none' } }}
+              color="inherit"
+              aria-label="menu"
+              onClick={handleMenuOpen}
             >
               <MenuIcon />
             </IconButton>
-          </Box>
-
-        </Toolbar>
-      </AppBar>
-
-      
-      <Drawer
-        anchor="left"
-        open={mobileOpen}
-        onClose={handleDrawerToggle}
-        ModalProps={{
-          keepMounted: true, 
-        }}
-        sx={{
-          display: { xs: 'block', md: 'none' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240 },
-        }}
-      >
-        {drawer}
-      </Drawer>
-    </>
+            <Menu
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={handleMenuClose}
+            >
+              <MenuItem component={Link} to="/" onClick={handleMenuClose}>All</MenuItem>
+              <MenuItem component={Link} to="/men" onClick={handleMenuClose}>Men</MenuItem>
+              <MenuItem component={Link} to="/women" onClick={handleMenuClose}>Women</MenuItem>
+              <MenuItem component={Link} to="/create-account" onClick={handleMenuClose}>Account</MenuItem>
+              <MenuItem component={Link} to="/cart" onClick={handleMenuClose}>
+                Cart ({cartItemsCount})
+              </MenuItem>
+            </Menu>
+          </>
+        ) : (
+          <>
+            <Button color="inherit" component={Link} to="/">
+              All
+            </Button>
+            <Button color="inherit" component={Link} to="/men">
+              Men
+            </Button>
+            <Button color="inherit" component={Link} to="/women">
+              Women
+            </Button>
+            
+            <IconButton color="inherit" component={Link} to="/create-account">
+              <PersonIcon />
+            </IconButton>
+            
+            <IconButton color="inherit" component={Link} to="/cart">
+              <Badge badgeContent={cartItemsCount} color="secondary">
+                <ShoppingCartIcon />
+              </Badge>
+            </IconButton>
+          </>
+        )}
+      </Toolbar>
+    </AppBar>
   );
 }
+
+export default Navbar;
