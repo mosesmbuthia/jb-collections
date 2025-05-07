@@ -1,11 +1,12 @@
 import React from 'react'
-import {Container, Box, Typography, TextField, Button, Alert} from '@mui/material';
+import {Container, Box, Typography, TextField, Button, Alert, Paper} from '@mui/material';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function createAccount() {
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     password:'',
     confirmPassword: ''
@@ -22,7 +23,7 @@ function createAccount() {
     e.preventDefault();
     
   
-    if (!formData.name || !formData.email || !formData.password) {
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.password) {
       setError('All fields are required');
       return;
     }
@@ -34,7 +35,8 @@ function createAccount() {
     
     
     createAccount({
-      name: formData.name,
+      firstName: formData.firstName,
+      lastName: formData.lastName,
       email: formData.email
     
     });
@@ -44,6 +46,7 @@ function createAccount() {
   };
 
   return (
+    <Paper elevation={2} sx={{maxWidth: '500px', justifyContent: 'center'}}>
     <Container  maxWidth="sm">
           <Box sx={{ my: 4 }}>
             <Typography variant="h4" component="h1" gutterBottom>
@@ -52,16 +55,26 @@ function createAccount() {
             
             {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
             
-            <form value="submit" onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
               <TextField
-                label="Full Name"
+                label="First Name"
                 variant="outlined"
                 fullWidth
                 margin="normal"
                 name="name"
-                value={formData.name}
+                value={formData.firstName}
                 onChange={handleChange}
               />
+              <TextField
+                label="Last Name"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                name="name"
+                value={formData.lastName}
+                onChange={handleChange}
+              />
+              
               
               <TextField
                 label="Email Address"
@@ -100,14 +113,19 @@ function createAccount() {
                 type="submit" 
                 variant="contained" 
                 color="primary" 
+
                 fullWidth 
                 sx={{ mt: 3 }}
               >
                 Create Account
               </Button>
             </form>
+            <Typography variant='h6'>
+              Already have an account? login
+            </Typography>
           </Box>
         </Container>
+        </Paper>
   )
 }
 
