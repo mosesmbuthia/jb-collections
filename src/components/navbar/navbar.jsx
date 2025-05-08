@@ -30,12 +30,16 @@ function Navbar({ cartItemsCount = 0 }) {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="sticky" sx={{ backgroundColor: '#f9f9f9', color: '#333', boxShadow: 'none' }}>
       <Toolbar>
-        <Typography variant="h6" component={Link} to="/" style={{ textDecoration: 'none', color: 'white', flexGrow: 1 }}>
+        <Typography 
+          variant="h6" 
+          component={Link} 
+          to="/" 
+          style={{ textDecoration: 'none', color: '#333', flexGrow: 1 }}
+        >
           JB Collections
         </Typography>
-        
         {isMobile ? (
           <>
             <IconButton
@@ -71,11 +75,9 @@ function Navbar({ cartItemsCount = 0 }) {
             <Button color="inherit" component={Link} to="/women">
               Women
             </Button>
-            
             <IconButton color="inherit" component={Link} to="/create-account">
               <PersonIcon />
             </IconButton>
-            
             <IconButton color="inherit" component={Link} to="/cart">
               <Badge badgeContent={cartItemsCount} color="secondary">
                 <ShoppingCartIcon />
