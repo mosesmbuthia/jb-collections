@@ -37,7 +37,7 @@ function Navbar({ cartItemsCount = 0 }) {
 
   return (
     <>
-      {/* Upper Navbar Section */}
+      
       <Box sx={{ backgroundColor: '#333', color: '#fff', padding: '5px 0', fontSize: '1.2rem' }}>
         <Stack direction="row" justifyContent="center" gap={8} alignItems="center" sx={{ px: 2 }}>
           <Stack direction="row" spacing={2} alignItems="center">
@@ -54,14 +54,14 @@ function Navbar({ cartItemsCount = 0 }) {
           <Stack direction="row" spacing={6} alignItems="center">
             <span>
               Call us on
-              <PhoneIcon fontSize="small" sx={{ marginRight: 0.5 }} /> +254 (719) 597-913
+              <PhoneIcon fontSize="small" sx={{ marginRight: 0.5, position: 'relative' }} /> +254 (719) 597-913
             </span>
             <span>Mon - Sat: 8AM - 9PM | Sun: 12PM - 10PM</span>
           </Stack>
         </Stack>
       </Box>
 
-      {/* Main Navbar Section */}
+      
       <AppBar position="sticky" sx={{ backgroundColor: '#f9f9f9', color: '#333', boxShadow: 'none' }}>
         <Toolbar>
           <Typography 
