@@ -35,7 +35,7 @@ function CreateAccount() {
       return;
     }
     
-    // Simulate account creation (you can replace this with actual API call)
+  //  to be replaced by the api url
     console.log('Account created:', formData);
     navigate('/login');
   };
