@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/navbar/navbar';
 import Home from './components/pages/home';
 import Account from './components/pages/account';
+import Login from './components/pages/login';
 
 
 // import MenClothing from './pages/MenClothing';
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/create-account" element={<Account />} />
+        <Route path="/login" element={<Login />} />
         
         
         {/* <Route path="/men" element={<MenClothing />} />
