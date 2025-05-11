@@ -1,9 +1,9 @@
-import React from 'react'
-import {Container, Box, Typography, TextField, Button, Alert, Paper} from '@mui/material';
+import React from 'react';
+import { Container, Box, Typography, TextField, Button, Alert, Paper, Link as MuiLink } from '@mui/material';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
-function createAccount() {
+function CreateAccount() {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -11,7 +11,10 @@ function createAccount() {
     password:'',
     confirmPassword: ''
   });
+
+  const navigate = useNavigate();
   const [error, setError] = useState();
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -22,7 +25,6 @@ function createAccount() {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-  
     if (!formData.firstName || !formData.lastName || !formData.email || !formData.password) {
       setError('All fields are required');
       return;
@@ -33,100 +35,77 @@ function createAccount() {
       return;
     }
     
-    
-    createAccount({
-      firstName: formData.firstName,
-      lastName: formData.lastName,
-      email: formData.email
-    
-    });
-    
-    // will edit this to redirect to login page after succesfully creating an account
-    navigate('/');
+    // Simulate account creation (you can replace this with actual API call)
+    console.log('Account created:', formData);
+    navigate('/login');
   };
 
   return (
-    <Paper elevation={2} sx={{maxWidth: '500px', justifyContent: 'center'}}>
-    <Container  maxWidth="sm">
-          <Box sx={{ my: 4 }}>
-            <Typography variant="h4" component="h1" gutterBottom>
-              Create an Account
-            </Typography>
-            
-            {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
-            
-            <form onSubmit={handleSubmit}>
-              <TextField
-                label="First Name"
-                variant="outlined"
-                fullWidth
-                margin="normal"
-                name="name"
-                value={formData.firstName}
-                onChange={handleChange}
-              />
-              <TextField
-                label="Last Name"
-                variant="outlined"
-                fullWidth
-                margin="normal"
-                name="name"
-                value={formData.lastName}
-                onChange={handleChange}
-              />
-              
-              
-              <TextField
-                label="Email Address"
-                variant="outlined"
-                fullWidth
-                margin="normal"
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-              />
-              
-              <TextField
-                label="Password"
-                variant="outlined"
-                fullWidth
-                margin="normal"
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-              />
-              
-              <TextField
-                label="Confirm Password"
-                variant="outlined"
-                fullWidth
-                margin="normal"
-                type="password"
-                name="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-              />
-              
-              <Button 
-                type="submit" 
-                variant="contained" 
-                color="primary" 
-
-                fullWidth 
-                sx={{ mt: 3 }}
-              >
-                Create Account
-              </Button>
-            </form>
-            <Typography variant='h6'>
-              Already have an account? login
-            </Typography>
-          </Box>
-        </Container>
-        </Paper>
-  )
+    <Container maxWidth="sm" sx={{ mt: 6 }}>
+      <Paper elevation={3} sx={{ p: 4, backgroundColor: '#f9f9f9', borderRadius: 2, boxShadow: '0 8px 16px rgba(0,0,0,0.1)' }}>
+        <Typography variant="h4" component="h1" gutterBottom color="primary.main">
+          Create an Account
+        </Typography>
+        {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
+        <form onSubmit={handleSubmit}>
+          <TextField
+            label="First Name"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+          />
+          <TextField
+            label="Last Name"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+          />
+          <TextField
+            label="Email Address"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          <TextField
+            label="Password"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+          <TextField
+            label="Confirm Password"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            type="password"
+            name="confirmPassword"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+          />
+          <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 3, py: 1.5 }}>
+            Create Account
+          </Button>
+        </form>
+        <Typography variant="body1" sx={{ mt: 3, textAlign: 'center' }}>
+          Already have an account? <MuiLink component={Link} to="/login" color="primary.main">Log in</MuiLink>
+        </Typography>
+      </Paper>
+    </Container>
+  );
 }
 
-export default createAccount
+export default CreateAccount;
