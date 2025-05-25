@@ -1,52 +1,120 @@
-import React from 'react';
-
-import { Container, Grid, Typography, Box, TextField, Button, Divider } from '@mui/material';
+import React, { useState } from 'react';
+import { Mail, ArrowRight } from 'lucide-react';
+import { Box, Container, Grid, Typography, TextField, Button, Link } from '@mui/material';
 
 const Footer = () => {
+  const [email, setEmail] = useState('');
+
+  const quickLinks = [
+    "How to Shop", 
+    "Checkout Error", 
+    "Return Policy", 
+    "Terms and Conditions", 
+    "Privacy & Policy", 
+    "Terms of Service", 
+    "Return & Refund Policy", 
+    "Sitemap"
+  ];
+
+  const handleEmailSubmit = () => {
+    console.log('Email submitted:', email);
+    setEmail('');
+  };
+
   return (
-    <footer>
-      <Container maxWidth="lg" sx={{ py: 6 }}>
-        <Grid container spacing={12}>
-         
-          <Grid item xs={12} md={4}>
-            <Typography variant="h6" fontWeight="bold" gutterBottom>Visit Us</Typography>
-            <Typography variant="subtitle1" fontWeight="bold">Physical location:</Typography>
-            <Typography variant="body2">ABC Plaza, 1st Floor, Lenana Road, Nairobi</Typography>
-            <Typography variant="subtitle1" fontWeight="bold" sx={{ mt: 2 }}>Opening Hours:</Typography>
-            <Typography variant="body2">Mon - Sat<br/>9AM - 7PM</Typography>
-            <Typography variant="body2">Sunday<br/>10AM - 6PM</Typography>
-            <Typography variant="subtitle1" fontWeight="bold" sx={{ mt: 2 }}>Customer Care Number (0719597913):</Typography>
-            <Typography variant="body2">(+254) 719597913</Typography>
+    <Box sx={{ backgroundColor: 'gray.50', borderTop: '1px solid', borderColor: 'gray.200', py: 6 }}>
+      <Container maxWidth="lg">
+        
+        <Grid container spacing={4} justifyContent="center">
+          
+          
+          <Grid item xs={12} sm={6} md={4}>
+            <Typography variant="h6" gutterBottom>
+              Visit Us
+            </Typography>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+              <Box>
+                <Typography variant="body2" color="textSecondary">
+                  Physical location: ABC Plaza, 1st Floor, Lenana Road, Nairobi
+                </Typography>
+              </Box>
+              <Box>
+                <Typography variant="body2" color="textSecondary">
+                  Opening Hours:
+                  <br />
+                  Mon - Sat: 9AM - 7PM
+                  <br />
+                  Sunday: 10AM - 6PM
+                </Typography>
+              </Box>
+              <Box>
+                <Typography variant="body2" color="textSecondary">
+                  Customer Care Number: (+254) 719597913
+                </Typography>
+              </Box>
+            </Box>
           </Grid>
 
           
-          <Grid item xs={12} md={4}>
-            <Typography variant="h6" fontWeight="bold" gutterBottom>Quick Links</Typography>
-            <Box component="ul" sx={{ p: 0, listStyleType: 'none' }}>
-              {[ "How to Shop", "Checkout Error", "Return Policy", "Terms and Conditions", "Privacy & Policy", "Terms of Service", "Return & Refund Policy", "Sitemap"].map((link, index) => (
-                <Typography key={index} variant="body2" component="li" sx={{ mb: 1 }}>{link}</Typography>
+          <Grid item xs={12} sm={6} md={4}>
+            <Typography variant="h6" gutterBottom>
+              Quick Links
+            </Typography>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+              {quickLinks.map((link, index) => (
+                <Link key={index} href="#" variant="body2" color="textSecondary" sx={{ '&:hover': { color: 'primary.main' } }}>
+                  {link}
+                </Link>
               ))}
             </Box>
           </Grid>
 
-          
-          <Grid item xs={12} md={4}>
-            <Typography variant="h6" fontWeight="bold" gutterBottom>Join our mailing list</Typography>
-            <Box component="form" sx={{ display: 'flex', alignItems: 'center' }}>
-              <TextField placeholder="Email" fullWidth sx={{ mr: 1 }} />
-              <Button variant="contained" color="primary">→</Button>
+         
+          <Grid item xs={12} sm={6} md={4}>
+            <Typography variant="h6" gutterBottom>
+              Join our mailing list
+            </Typography>
+            <Box sx={{ display: 'flex', flexDirection: 'column', sm: 'row', alignItems: 'center', gap: 2 }}>
+              <Box sx={{ position: 'relative', width: '100%' }}>
+                <Mail sx={{ position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)', color: 'gray.400' }} />
+                <TextField
+                  fullWidth
+                  variant="outlined"
+                  size="small"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  sx={{ paddingLeft: 3 }}
+                />
+              </Box>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleEmailSubmit}
+                sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
+              >
+                Subscribe
+                <ArrowRight sx={{ width: 20, height: 20 }} />
+              </Button>
             </Box>
           </Grid>
         </Grid>
-        <Divider sx={{ my: 4 }} />
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Typography variant="body2">&copy; {new Date().getFullYear()} Johnty Best Collections</Typography>
-          <Box sx={{ display: 'flex', gap: 2 }}>
-           
-          </Box>
+
+        {/* bottom footer*/}
+        <Box sx={{ borderTop: '1px solid', borderColor: 'gray.200', mt: 6, pt: 4 }}>
+          <Grid container justifyContent="space-between" spacing={2}>
+            <Grid item xs={12} sm={6} textAlign="center" smTextAlign="left">
+              <Typography variant="body2" color="textSecondary">
+                &copy; {new Date().getFullYear()} Johnty Best Collections. All rights reserved.
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={6} textAlign="center" smTextAlign="right">
+              {/* social media icons here */}
+            </Grid>
+          </Grid>
         </Box>
       </Container>
-    </footer>
+    </Box>
   );
 };
 
