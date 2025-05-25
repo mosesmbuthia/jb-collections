@@ -76,7 +76,7 @@ const Footer = () => {
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', sm: 'row', alignItems: 'center', gap: 2 }}>
               <Box sx={{ position: 'relative', width: '100%' }}>
-                <Mail sx={{ position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)', color: 'gray.400' }} />
+                {/* <Mail sx={{ position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)', color: 'gray.400' }} /> */}
                 <TextField
                   fullWidth
                   variant="outlined"

@@ -38,8 +38,9 @@ function Navbar({ cartItemsCount = 0 }) {
   return (
     <>
       
-      <Box sx={{ backgroundColor: '#333', color: '#fff', padding: '5px 0', fontSize: '1.2rem' }}>
-        <Stack direction="row" justifyContent="center" gap={8} alignItems="center" sx={{ px: 2 }}>
+      <Box sx={{ backgroundColor: '#333', color: '#fff', padding: '5px 0', fontSize: '1rem' }}>
+        <Stack direction="row" justifyContent="center" alignItems="center" sx={{ px: 2, gap: 4 }}>
+          
           <Stack direction="row" spacing={2} alignItems="center">
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style={{ color: '#fff' }}>
               <FacebookIcon fontSize="small" />
@@ -51,27 +52,31 @@ function Navbar({ cartItemsCount = 0 }) {
               <InstagramIcon fontSize="small" />
             </a>
           </Stack>
-          <Stack direction="row" spacing={6} alignItems="center">
+          
+          <Stack direction="row" spacing={6} alignItems="center" textAlign="center">
             <span>
               Call us on
-              <PhoneIcon fontSize="small" sx={{ marginRight: 0.5, position: 'relative' }} /> +254 (719) 597-913
+              <PhoneIcon fontSize="small" sx={{ marginRight: 0.5 }} /> +254 (719) 597-913
             </span>
             <span>Mon - Sat: 8AM - 9PM | Sun: 12PM - 10PM</span>
           </Stack>
         </Stack>
       </Box>
 
-      
+     
       <AppBar position="sticky" sx={{ backgroundColor: '#f9f9f9', color: '#333', boxShadow: 'none' }}>
-        <Toolbar>
+        <Toolbar sx={{ justifyContent: 'space-between' }}>
+          
           <Typography 
             variant="h6" 
             component={Link} 
             to="/" 
-            style={{ textDecoration: 'none', color: '#333', flexGrow: 1 }}
+            sx={{ textDecoration: 'none', color: '#333', flexGrow: 1, textAlign: 'center' }}
           >
             Johnty Best Collections
           </Typography>
+
+          
           {isMobile ? (
             <>
               <IconButton
@@ -86,6 +91,11 @@ function Navbar({ cartItemsCount = 0 }) {
                 anchorEl={anchorEl}
                 open={Boolean(anchorEl)}
                 onClose={handleMenuClose}
+                PaperProps={{
+                  sx: {
+                    top: '64px', // Offset for the AppBar height
+                  },
+                }}
               >
                 <MenuItem component={Link} to="/" onClick={handleMenuClose}>All</MenuItem>
                 <MenuItem component={Link} to="/men" onClick={handleMenuClose}>Men</MenuItem>
@@ -97,16 +107,11 @@ function Navbar({ cartItemsCount = 0 }) {
               </Menu>
             </>
           ) : (
-            <>
-              <Button color="inherit" component={Link} to="/">
-                All
-              </Button>
-              <Button color="inherit" component={Link} to="/men">
-                Men
-              </Button>
-              <Button color="inherit" component={Link} to="/women">
-                Women
-              </Button>
+           
+            <Stack direction="row" spacing={4} alignItems="center" justifyContent="center">
+              <Button color="inherit" component={Link} to="/">All</Button>
+              <Button color="inherit" component={Link} to="/men">Men</Button>
+              <Button color="inherit" component={Link} to="/women">Women</Button>
               <IconButton color="inherit" component={Link} to="/create-account">
                 <PersonIcon />
               </IconButton>
@@ -115,7 +120,7 @@ function Navbar({ cartItemsCount = 0 }) {
                   <ShoppingCartIcon />
                 </Badge>
               </IconButton>
-            </>
+            </Stack>
           )}
         </Toolbar>
       </AppBar>
