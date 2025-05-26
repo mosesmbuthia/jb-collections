@@ -7,7 +7,7 @@ const HeroSection = () => {
     <Box
       sx={{
         height: { xs: "80vh", sm: "90vh", md: "100vh" },
-        width: "100%",
+        maxWidth: "100%" ,
         backgroundImage: `
           linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
           url(${bgImag})`
